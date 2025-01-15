@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 // Product Interface
 // Abstract class
@@ -12,21 +13,21 @@ public:
 class Circle : public Shape {
 public:
    void draw() override {
-      std::cout << "Drawing Circle" << std::endl;
+      cout << "Drawing Circle" << endl;
    }
 };
 
 class Square : public Shape {
 public:
    void draw() override {
-      std::cout << "Drawing Square" << std::endl;
+      cout << "Drawing Square" << endl;
    }
 };
 
 // Creator
 class ShapeFactory {
 public:
-   virtual Shape* createShape(std::string type) {
+   virtual Shape* createShape(string type) {
       if (type == "Circle") return new Circle();
       if (type == "Square") return new Square();
       return nullptr;
@@ -48,6 +49,8 @@ int main() {
 }
 
 /* Notes
+ * Pattern Category: Creational
+ * Design +Pattern: Factory
  * Intent: The Factory Method pattern defines an interface for creating an object,
  * but lets subclasses alter the type of objects that will be created.
  * Scenario: Imagine you are designing a framework for a graphics drawing application.

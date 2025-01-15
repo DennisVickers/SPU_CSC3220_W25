@@ -9,51 +9,53 @@ const int SECTOR_SIZE = 0;
 // Subsystem 1
 class CPU {
 public:
-    void freeze() { cout << "CPU freeze.\n"; }
-    void jump(long position) { cout << "CPU jump to: " << position << "\n"; }
-    void execute() { cout << "CPU execute.\n"; }
+   void freeze() { cout << "CPU freeze.\n"; }
+   void jump(long position) { cout << "CPU jump to: " << position << "\n"; }
+   void execute() { cout << "CPU execute.\n"; }
 };
 
 // Subsystem 2
 class Memory {
 public:
-    void load(long position, const char* data) {
-        cout << "Memory load: \"" << data << "\" at position " << position << "\n";
-    }
+   void load(long position, const char* data) {
+      cout << "Memory load: \"" << data << "\" at position " << position << "\n";
+   }
 };
 
 // Subsystem 3
 class HardDrive {
 public:
-    const char* read(long lba, int size) {
-        return "Some data from sector ";
-    }
+   const char* read(long lba, int size) {
+       return "Some data from sector ";
+   }
 };
 
 // Facade
 class ComputerFacade {
 private:
-    CPU processor;
-    Memory ram;
-    HardDrive hd;
+   CPU processor;
+   Memory ram;
+   HardDrive hd;
 
 public:
-    void start() {
-        processor.freeze();
-        ram.load(BOOT_ADDRESS, hd.read(BOOT_SECTOR, SECTOR_SIZE));
-        processor.jump(BOOT_ADDRESS);
-        processor.execute();
-    }
+   void start() {
+      processor.freeze();
+      ram.load(BOOT_ADDRESS, hd.read(BOOT_SECTOR, SECTOR_SIZE));
+      processor.jump(BOOT_ADDRESS);
+      processor.execute();
+   }
 };
 
 // Usage
 int main() {
-    ComputerFacade computer;
-    computer.start();
-    return 0;
+   ComputerFacade computer;
+   computer.start();
+   return 0;
 }
 
 /* Notes:
+ * Pattern Category: Structural
+ * Pattern: Facade
  * In this example, ComputerFacade provides a simple method start to turn on the computer.
  * This method handles all the complex processes like loading the CPU, memory, and reading
  * from the hard drive.
