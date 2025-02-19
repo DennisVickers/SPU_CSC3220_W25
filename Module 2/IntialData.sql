@@ -42,5 +42,30 @@ FROM Prayer pr
 JOIN Thing th ON th.Type = 3
 WHERE pr.subject = "Work";
 
+INSERT INTO Answer (Description, PrayerId)
+SELECT "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa." Description, pr.PrayerId
+FROM Prayer pr
+WHERE pr.subject = "School";
+
+INSERT INTO Answer (Description, PrayerId)
+SELECT "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus." Description, pr.PrayerId
+FROM Prayer pr
+WHERE pr.subject = "School";
+
+INSERT INTO Answer (Description, PrayerId)
+SELECT "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna." Description, pr.PrayerId
+FROM Prayer pr
+WHERE pr.subject = "Family";
+
+INSERT INTO Answer (Description, PrayerId)
+SELECT "Mauris eget neque at sem venenatis eleifend. Ut nonummy." Description, pr.PrayerId
+FROM Prayer pr
+WHERE pr.subject = "Family";
+
+INSERT INTO Answer (Description, PrayerId)
+SELECT "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue." Description, pr.PrayerId
+FROM Prayer pr
+WHERE pr.subject = "Health";
+
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

@@ -8,6 +8,8 @@ DELETE FROM Thing;
 DELETE FROM sqlite_sequence WHERE name = 'Thing';
 DELETE FROM ForPerson;
 DELETE FROM ForThing;
+DELETE FROM Answer;
+DELETE FROM sqlite_sequence WHERE name = 'Answer';
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
